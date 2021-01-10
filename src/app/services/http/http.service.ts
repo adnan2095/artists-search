@@ -1,20 +1,11 @@
-import { environment } from '../../../environments/environment';
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
-import { map, catchError, tap } from 'rxjs/operators';
+import { HttpClient, HttpParams } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class HttpService {
-  /**
-   * Base url for calling APIs
-   *
-   * @memberof HttpService
-   */
-  baseUrl = environment.apiBaseUrl;
-
   /**
    * Creates an instance of HttpService.
    * @param {HttpClient} http
@@ -26,11 +17,11 @@ export class HttpService {
    * Takes an api route as an input and returns the response
    *
    * @param {string} path
+   * @param {HttpParams} params
    * @return {*}  {Observable<any>}
    * @memberof HttpService
    */
-  get(path: string): Observable<any> {
-    return this.http.get(this.baseUrl + path);
+  get(path: string, params: HttpParams): Observable<any> {
+    return this.http.get(path, { params: params});
   }
-  // Add CRUD http generic methods according to need here
 }

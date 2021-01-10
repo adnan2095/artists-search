@@ -1,3 +1,22 @@
+/* ----------- Desktop ----------- */
+@media screen
+  and (min-device-width: 1200px) {
+    .search-bar-container {
+      .input-group {
+        margin-top: 200px;
+      }
+    }
+}
+
+@media screen
+  and (max-device-width: 1199px) {
+    .search-bar-container {
+      .input-group {
+        margin-top: 200px;
+      }
+    }
+}
+
 .search-bar-container {
   padding: 10px 10px;
 
@@ -19,5 +38,10 @@
       right: 0;
       padding: 15px;
     }
+  }
+
+  .enhanced-search {
+    text-align: center;
+    padding: 20px;
   }
 }
