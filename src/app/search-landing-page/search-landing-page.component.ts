@@ -21,11 +21,11 @@ export class SearchLandingPageComponent implements OnInit {
   /**
    * Creates an instance of SearchLandingPageComponent.
    *
-   * @param {BandsInTownService} bandInTownService
+   * @param {BandsInTownService} bandsInTownService
    * @param {FormBuilder} formBuilder
    * @memberof SearchLandingPageComponent
    */
-  constructor(private bandInTownService: BandsInTownService,
+  constructor(private bandsInTownService: BandsInTownService,
     private formBuilder: FormBuilder) { }
 
   /**
@@ -57,11 +57,11 @@ export class SearchLandingPageComponent implements OnInit {
   getSearchResults() {
     const query = this.searchForm.get('searchQuery').value;
     if (query.length > 0) {
-      this.bandInTownService.query = query;
+      this.bandsInTownService.query = query;
       if (this.searchForm.get('enhancedSearch').value.length > 0 ) {
-        this.bandInTownService.getArtists('originApi/searchSuggestions', new HttpParams().set('searchTerm', query).set('cameFromCode', '257'), true);
+        this.bandsInTownService.getArtists('originApi/searchSuggestions', new HttpParams().set('searchTerm', query).set('cameFromCode', '257'), true);
       } else {
-        this.bandInTownService.getArtists('api/artists/' + query, new HttpParams().set('app_id', 'something'), false);
+        this.bandsInTownService.getArtists('api/artists/' + query, new HttpParams().set('app_id', 'something'), false);
       }
     }
   }

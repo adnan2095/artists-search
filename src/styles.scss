@@ -3,3 +3,11 @@ body {
   font-family: 'Roboto';
   font-size: 13px;
 }
+
+.p-grid {
+  .p-grid-6 {
+    margin: 20px !important;
+    width: 200px !important;
+    height: auto !important;
+  }
+}

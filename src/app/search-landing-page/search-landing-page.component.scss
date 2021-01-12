@@ -4,7 +4,16 @@
     .search-bar-container {
       .input-group {
         margin-top: 200px;
+        transition: margin 700ms;
+
+        &.input-on-top {
+          margin-top: 100px;
+        }
       }
+    }
+
+    .p-grid-4 {
+      width: 285px;
     }
 }
 
@@ -12,8 +21,12 @@
   and (max-device-width: 1199px) {
     .search-bar-container {
       .input-group {
-        margin-top: 200px;
+        margin-top: 50px;
       }
+    }
+
+    .p-grid-4 {
+      width: 100%;
     }
 }
 
@@ -25,6 +38,7 @@
 
     input {
       height: 45px;
+      width: 100%;
       border: none;
       border-radius: 2px;
       padding-left: 5px;
@@ -37,6 +51,7 @@
       position: absolute;
       right: 0;
       padding: 15px;
+      cursor: pointer;
     }
   }
 
@@ -45,3 +60,4 @@
     padding: 20px;
   }
 }
+

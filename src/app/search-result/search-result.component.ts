@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Artist } from './../interfaces/artist';
+import { BandsInTownService } from './../services/bands-in-town/bands-in-town.service';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-search-result',
@@ -6,10 +8,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./search-result.component.scss']
 })
 export class SearchResultComponent implements OnInit {
+  @Input() artist: Artist = null;
 
-  constructor() { }
+  constructor(private bandsInTownService: BandsInTownService) { }
 
   ngOnInit() {
   }
-
 }
