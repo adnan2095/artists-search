@@ -1,0 +1,30 @@
+@media screen and (min-device-width: 1200px) {
+  .back-to-results, .events-container {
+    margin: 0 100px;  }
+}
+
+@media screen and (max-device-width: 1199px) {
+  .back-to-results, .events-container {
+    margin: 0 30px;
+  }
+
+  .event {
+    width: 100%;
+  }
+}
+
+.back-to-results {
+  font-weight: 900;
+  cursor: pointer;
+  width: auto;
+  margin-top: 50px;
+}
+
+.events-container {
+  padding: 0 10px;
+  height: calc(100vh - 50px - 100px);
+
+  .p-card-header {
+    padding: 10px;
+  }
+}

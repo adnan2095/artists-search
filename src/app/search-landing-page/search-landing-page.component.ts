@@ -35,6 +35,10 @@ export class SearchLandingPageComponent implements OnInit {
    */
   ngOnInit() {
     this.createForm();
+    const oldQuery = localStorage.getItem('query');
+    if (oldQuery) {
+      this.setQuery(oldQuery);
+    }
   }
 
   /**
@@ -58,11 +62,19 @@ export class SearchLandingPageComponent implements OnInit {
     const query = this.searchForm.get('searchQuery').value;
     if (query.length > 0) {
       this.bandsInTownService.query = query;
+      localStorage.setItem('enhanced', this.searchForm.get('enhancedSearch').value.length > 0 ? 'enhanced' : '');
       if (this.searchForm.get('enhancedSearch').value.length > 0 ) {
         this.bandsInTownService.getArtists('originApi/searchSuggestions', new HttpParams().set('searchTerm', query).set('cameFromCode', '257'), true);
       } else {
         this.bandsInTownService.getArtists('api/artists/' + query, new HttpParams().set('app_id', 'something'), false);
       }
     }
+  }
+
+  setQuery(query) {
+    this.searchForm.get('searchQuery').patchValue(query);
+    const enhancedValue = localStorage.getItem('enhanced');
+    this.searchForm.get('enhancedSearch').setValue(enhancedValue === 'enhanced' ? [undefined] : '');
+    this.getSearchResults();
   }
 }

@@ -11,3 +11,22 @@ body {
     height: auto !important;
   }
 }
+
+.p-progressbar {
+  height: 5px !important;
+}
+
+.p-card {
+  font-size: 13px !important;
+
+  .p-card-content {
+    padding: 0 !important;
+  }
+}
+
+.text-ellipsis {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 100%;
+}

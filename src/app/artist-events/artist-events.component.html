@@ -1,1 +1,46 @@
-<p>artist-events works!</p>
+<div class="p-d-flex back-to-results" (click)="bandsInTownService.navigateToHome()">
+  <div class="p-mr-1"><i class="p-mr-2 pi pi-angle-left"></i></div>
+  <div class="p-mr-1">Back to results</div>
+</div>
+
+<app-search-result></app-search-result>
+<div class="events-container">
+  <div class="p-grid p-fluid">
+      <div *ngFor="let event of bandsInTownService.events" class="p-col-3 event">
+        <p-card subheader="EVENT DETAILS">
+          <p-divider></p-divider>
+          <div class="p-grid p-fluid">
+            <div class="p-col-6">
+              <div class="p-d-flex p-flex-column">
+                <div class="p-mb-2"><strong>Country</strong></div>
+                <div class="p-mb-2"  title="{{event.venue.country}}">
+                  <label class="text-ellipsis">{{event.venue.country}}</label>
+                </div>
+                <br>
+                <div><strong>Venue</strong></div>
+                <div class="text-ellipsis" title="{{event.venue.name}}">
+                  <label>{{event.venue.name}}</label>
+                </div>
+              </div>
+            </div>
+            <div class="p-col-6">
+              <div class="p-d-flex p-flex-column">
+                <div class="p-mb-2"><strong>City</strong></div>
+                <div class="p-mb-2" title="{{event.venue.city}}">
+                  <label class="text-ellipsis">{{event.venue.city}}</label>
+                </div>
+                <br>
+                <div><strong>Date</strong></div>
+                <div>
+                  <label>{{event.datetime | date:'MMM d, y' }}</label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </p-card>
+      </div>
+    <div *ngIf="bandsInTownService.events.length === 0">
+      <strong>No results found. Please try with another artist.</strong>
+    </div>
+  </div>
+</div>

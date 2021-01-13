@@ -1,3 +1,4 @@
+import { BandsInTownService } from './../services/bands-in-town/bands-in-town.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ArtistEventsComponent implements OnInit {
 
-  constructor() { }
+  constructor(private bandsInTownService: BandsInTownService) { }
 
   ngOnInit() {
+    const artist = localStorage.getItem('selectedArtist');
+    if (artist && JSON.parse(artist)) {
+      this.bandsInTownService.selectedArtist = JSON.parse(artist);
+      if (this.bandsInTownService.events.length === 0) {
+        this.bandsInTownService.getEvents(JSON.parse(artist));
+      }
+    }
   }
-
 }

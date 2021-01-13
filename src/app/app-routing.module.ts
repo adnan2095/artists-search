@@ -5,7 +5,7 @@ import { ArtistEventsComponent } from './artist-events/artist-events.component';
 
 const routes: Routes = [
   { path: '', component: SearchLandingPageComponent },
-  { path: 'artist-events/:name', component: SearchLandingPageComponent }
+  { path: 'artist-events/:name', component: ArtistEventsComponent }
 ];
 
 @NgModule({

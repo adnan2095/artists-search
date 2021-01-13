@@ -14,6 +14,10 @@ import { CardModule } from 'primeng/card';
 import { AvatarModule } from 'primeng/avatar';
 import { AvatarGroupModule } from 'primeng/avatargroup';
 import { SkeletonModule } from 'primeng/skeleton';
+import { ProgressBarModule } from 'primeng/progressbar';
+import { DividerModule } from 'primeng/divider';
+import { DatePipe } from '@angular/common';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,9 +35,11 @@ import { SkeletonModule } from 'primeng/skeleton';
     CardModule,
     AvatarModule,
     AvatarGroupModule,
-    SkeletonModule
+    SkeletonModule,
+    ProgressBarModule,
+    DividerModule
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
