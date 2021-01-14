@@ -1,6 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from  '@angular/common/http/testing';
 import { HttpService } from './http.service';
+import { HttpParams } from '@angular/common/http';
 
 describe('HttpService', () => {
   let httpTestingController: HttpTestingController;
@@ -43,30 +44,32 @@ describe('HttpService', () => {
       ] as any[];
     });
 
-    //Test case 1: Get one test result for 'John'
-    it('should return expected artists by calling once', () => {
-      httpService.get('/artists/john?app_id=asdf').subscribe(
+    //Test case 1: Get test results for 'John'
+    it('should return artists', () => {
+      let params = new HttpParams().set('app_id', 'something');
+      httpService.get('https://rest.bandsintown.com/artists/john', params).subscribe(
         artists => expect(artists).toEqual(expectedResults, 'should return expected artists'),
         fail
       );
 
-      const req = httpTestingController.expectOne(httpService.baseUrl +'/artists/john?app_id=asdf');
+      const req = httpTestingController.expectOne('https://rest.bandsintown.com/artists/john?app_id=something');
       expect(req.request.method).toEqual('GET');
 
-      req.flush(expectedResults); //Return expectedEmps
+      req.flush(expectedResults);
     });
 
     //Test case 2: Get no test result for 'asdfghfgsdfn'
     it('should return empty list on no match', () => {
-      httpService.get('/artists/asdfghfgsdfn?app_id=asdf').subscribe(
-        artists => expect(artists).toEqual([], 'should return expected artists'),
+      let params = new HttpParams().set('app_id', 'something');
+      httpService.get('https://rest.bandsintown.com/api/artists/asdfghfgsdfn', params).subscribe(
+        artists => expect(artists).toEqual([], 'should return no artists'),
         fail
       );
 
-      const req = httpTestingController.expectOne(httpService.baseUrl +'/artists/asdfghfgsdfn?app_id=asdf');
+      const req = httpTestingController.expectOne('https://rest.bandsintown.com/artists/asdfghfgsdfn?app_id=something');
       expect(req.request.method).toEqual('GET');
 
-      req.flush([]); //Return expectedEmps
+      req.flush([]);
     });
   });
 });

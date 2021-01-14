@@ -1,4 +1,4 @@
-export interface Event {
+export interface Events {
   id: string;
   artist_id: number;
   url:  string;

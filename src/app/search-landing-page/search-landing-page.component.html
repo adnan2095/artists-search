@@ -1,12 +1,20 @@
-<div class="p-grid p-fluid search-bar-container">
-    <div class="p-col-12 p-md-4"></div>
-
+<span *ngIf="bandsInTownService.searchState !== 'eventSearched'">
+  <div class="p-grid p-fluid search-bar-container p-jc-center">
     <div class="p-col-12 p-md-4">
-      <div class="input-group">
-        <input type="text" pInputText placeholder="Search" [formControl]="searchQuery">
-        <i class="pi pi-search"></i>
-      </div>
+      <form [formGroup]="searchForm" (ngSubmit)="getSearchResults()">
+        <div class="input-group {{bandsInTownService.searchState === 'idle' ? '' : 'input-on-top' }}">
+          <input type="text" pInputText placeholder="Search" formControlName="searchQuery"
+            (keyup.enter)="$event.stopPropagation();getSearchResults()">
+          <i class="pi pi-search" (click)="getSearchResults()"></i>
+        </div>
+        <div class="enhanced-search">
+          <label>
+            <p-checkbox p-checkbox id="checkbox" formControlName="enhancedSearch"></p-checkbox>
+            Enhanced search
+          </label>
+        </div>
+      </form>
     </div>
-
-    <div class="p-col-12 p-md-4"></div>
-</div>
+  </div>
+  <app-search-result></app-search-result>
+</span>

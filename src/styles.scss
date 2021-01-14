@@ -1,1 +1,32 @@
 /* You can add global styles to this file, and also import other style files */
+body {
+  font-family: 'Roboto';
+  font-size: 13px;
+}
+
+.p-grid {
+  .p-grid-6 {
+    margin: 20px !important;
+    width: 200px !important;
+    height: auto !important;
+  }
+}
+
+.p-progressbar {
+  height: 5px !important;
+}
+
+.p-card {
+  font-size: 13px !important;
+
+  .p-card-content {
+    padding: 0 !important;
+  }
+}
+
+.text-ellipsis {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 100%;
+}
